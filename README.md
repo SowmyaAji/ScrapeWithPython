@@ -15,7 +15,7 @@ A Python program to scrape a web page and result in a csv file.
 Project requires Python 3.6.8 and pip 19.1.1
 
 ```
-$ git clone 
+$ git clone https://github.com/SowmyaAji/ScrapeWithPython.git
 $ pipenv shell
 $ pip install -r requirements.txt
 
