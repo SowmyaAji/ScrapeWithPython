@@ -125,7 +125,7 @@ get_address_latlong()
 
 The above code generates the output.csv file that has all the addresses and geographical coordinates for the emergency care centers in Wake County. I am have built an app with jQuery and Leaflet.js to use this file, which will show the nearest emergency care center in Wake County to the address typed in by users on the frontend. Here is the link to the webpage hosting the app: https://sowmyaaji.github.io/find_help.html
 
-And here is the link to the repository of that app:
+And here is the link to the repository of that app: https://github.com/SowmyaAji/MedHelpNearMe
 
 
 
