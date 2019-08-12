@@ -41,7 +41,10 @@ def get_address_list():
 
 def get_zips():
     """Get the zipcodes"""
-    return [item['zip'] for item in get_address_list()]
+    return [(item['Zip']).strip() for item in get_address_list()]
+
+
+print(get_zips())
 
 
 def get_latlong():
@@ -49,27 +52,27 @@ def get_latlong():
     address_latlong = []
     latlong = get_rows("uslatlongfull.csv")
     for row in latlong:
-        if (row['zip']).strip() in address:
+        if row['Zip'] in address:
             address_latlong.append(
-                row['zip'].strip() + "," + row['lat'] + "," + row['lng'] + "\n")
+                row['Zip'].strip() + "," + row['Lat'] + "," + row['Lng'])
     return address_latlong
 
 
-def write_csv2():
-    """Write the list of Wake Med addresses into a CSV file"""
-    latlong = get_latlong()
-    with open('latlong.csv', 'w', newline='') as myfile:
-        wr = csv.writer(myfile, quoting=csv.QUOTE_ALL)
-        wr.writerow(latlong)
+def print_csv2():
+    output = get_latlong()
+    with open('latlong.csv', 'w') as f:
+        f.write('Zip,Latitude,Longitude\n')
+        f.write("\n".join(output))
 
 
-# write_csv2()
+# print_csv2()
+
 
 def get_address_latlong():
     a = pd.read_csv("address.csv")
     b = pd.read_csv("latlong.csv")
     b = b.dropna(axis=1)
-    merged = a.merge(b, on='zip')
+    merged = a.merge(b, on='Zip')
     merged.to_csv("output.csv", index=False)
 
 
