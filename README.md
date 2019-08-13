@@ -44,7 +44,7 @@ However, I still haven't worked out the code to separate the individual parts of
 the overall <p> tag, as each element does not have css classes or tags on them, making all of them one 
 block under the <p> tag. 
 
-I ended u generating a csv file (address1.csv) where all the lines ran into each other -- the address, telephone etc. Also, the WakeMed site does not have uniformity in the way the addresses are listed on their site (this can be fixed with python code) so 
+I ended up generating a csv file (address1.csv) where all the lines ran into each other -- the address, telephone etc. Also, the WakeMed site does not have uniformity in the way the addresses are listed on their site (this can be fixed with python code) so 
 I finally fixed the csv file (address.csv) by hand before going ahead with the program. I also had to manually remove the map and directions section, which again runs into the other lines, all inside the <p> tag. I am still working on fixing this problem.
 
 
