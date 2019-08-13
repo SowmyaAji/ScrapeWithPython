@@ -41,11 +41,11 @@ The program uses Beautiful Soup 4 to scrape from the WakeMed website:
 "https://www.wakemed.org/emergency-trauma-locations
 
 However, I still haven't worked out the code to separate the individual parts of the address from
-the overall <p> tag, as each element does not have css classes or tags on them, making all of them one 
-block under the <p> tag. 
+the overall '<p>' tag, as each element does not have css classes or tags on them, making all of them one 
+block under the '<p>' tag. 
 
 I ended up generating a csv file (address1.csv) where all the lines ran into each other -- the address, telephone etc. Also, the WakeMed site does not have uniformity in the way the addresses are listed on their site (this can be fixed with python code) so 
-I finally fixed the csv file (address.csv) by hand before going ahead with the program. I also had to manually remove the map and directions section, which again runs into the other lines, all inside the <p> tag. I am still working on fixing this problem.
+I finally fixed the csv file (address.csv) by hand before going ahead with the program. I also had to manually remove the map and directions section, which again runs into the other lines, all inside the '<p>' tag. I am still working on fixing this problem.
 
 
 The next csv file that I generate, latlong.csv, uses a list of latitudes and logitudes in the US, taken from Erichrust's gist here:
