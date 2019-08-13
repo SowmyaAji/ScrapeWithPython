@@ -18,62 +18,63 @@ def get_address():
     return address_list
 
 
-def write_csv():
-    """Write the list of Wake Med addresses into a CSV file"""
-    address_list = get_address()
-    with open('address.csv', 'w', newline='') as myfile:
-        wr = csv.writer(myfile, quoting=csv.QUOTE_ALL)
-        wr.writerow(address_list)
+def print_csv():
+    address = get_address()
+    with open('address1.csv', 'w') as f:
+        f.write('Name,Tel,Address,City,State,Zip,Map\n')
+        f.write("\n".join(address))
 
 
-# write_csv()
-def get_rows(file):
-    """Open csv files and return the data"""
-    with open(file) as csvfile:
-        reader = csv.DictReader(csvfile)
-        return list(reader)
+print_csv()
 
 
-def get_address_list():
-    address = get_rows('address.csv')
-    return address
+# def get_rows(file):
+#     """Open csv files and return the data"""
+#     with open(file) as csvfile:
+#         reader = csv.DictReader(csvfile)
+#         return list(reader)
 
 
-def get_zips():
-    """Get the zipcodes"""
-    return [(item['Zip']).strip() for item in get_address_list()]
+# def get_address_list():
+#     address = get_rows('address.csv')
+#     return address
 
 
-print(get_zips())
+# def get_zips():
+#     """Get the zipcodes"""
+#     return [(item['Zip']).strip() for item in get_address_list()]
 
 
-def get_latlong():
-    address = get_zips()
-    address_latlong = []
-    latlong = get_rows("uslatlongfull.csv")
-    for row in latlong:
-        if row['Zip'] in address:
-            address_latlong.append(
-                row['Zip'].strip() + "," + row['Lat'] + "," + row['Lng'])
-    return address_latlong
+# print(get_zips())
 
 
-def print_csv2():
-    output = get_latlong()
-    with open('latlong.csv', 'w') as f:
-        f.write('Zip,Latitude,Longitude\n')
-        f.write("\n".join(output))
+# def get_latlong():
+#     address = get_zips()
+#     address_latlong = []
+#     latlong = get_rows("uslatlongfull.csv")
+#     for row in latlong:
+#         if row['Zip'] in address:
+#             address_latlong.append(
+#                 row['Zip'].strip() + "," + row['Lat'] + "," + row['Lng'])
+#     return address_latlong
 
 
-# print_csv2()
+# def print_csv2():
+#     output = get_latlong()
+#     with open('latlong.csv', 'w') as f:
+#         f.write('Zip,Latitude,Longitude\n')
+#         f.write("\n".join(output))
 
 
-def get_address_latlong():
-    a = pd.read_csv("address.csv")
-    b = pd.read_csv("latlong.csv")
-    b = b.dropna(axis=1)
-    merged = a.merge(b, on='Zip')
-    merged.to_csv("output.csv", index=False)
+# # print_csv2()
 
 
-get_address_latlong()
+# def get_address_latlong():
+#     a = pd.read_csv("address.csv")
+#     b = pd.read_csv("latlong.csv")
+#     b = b.dropna(axis=1)
+#     merged = a.merge(b, on='Zip')
+#     merged.to_csv("output.csv", index=False)
+
+
+# get_address_latlong()
