@@ -42,23 +42,11 @@ The program uses Beautiful Soup 4 to scrape from the WakeMed website:
 
 However, I still haven't worked out the code to separate the individual parts of the address from
 the overall <p> tag, as each element does not have css classes or tags on them, making all of them one 
-block under the <p> tag. So the following python code that I used:
+block under the <p> tag. 
 
-```
-def write_csv():
-    """Write the list of Wake Med addresses into a CSV file"""
-    address_list = get_address()
-    with open('address.csv', 'w', newline='') as myfile:
-        wr = csv.writer(myfile, quoting=csv.QUOTE_ALL)
-        wr.writerow(address_list)
-write_csv()
+I ended u generating a csv file (address1.csv) where all the lines ran into each other -- the address, telephone etc. Also, the WakeMed site does not have uniformity in the way the addresses are listed on their site (this can be fixed with python code) so 
+I finally fixed the csv file (address.csv) by hand before going ahead with the program. I also had to manually remove the map and directions section, which again runs into the other lines, all inside the <p> tag. I am still working on fixing this problem.
 
-```
-
-generated a csv file (address.csv) where all the lines ran into each other -- the address, telephone etc. Also, the WakeMed site does not have uniformity in the way the addresses are listed on their site (this can be fixed with python code) so 
-I finally fixed the csv file by hand before going ahead with the program. I also had to manually remove the map and directions section, which again runs into the other lines, all inside the <p> tag. 
-
-If you run all the lines of my code, you will have to fix the address.csv by hand like I did. I still haven't worked out the correct way of doing this to generate the file as I want it. So ideally, do not run the above function, but instead use the file that I have manually fixed, which is there in the repository.
 
 The next csv file that I generate, latlong.csv, uses a list of latitudes and logitudes in the US, taken from Erichrust's gist here:
 
@@ -95,21 +83,7 @@ def get_latlong():
     return address_latlong
 ```
 
-Again the latlong.csv file that I generate with this code:
-
-```
-def write_csv2():
-    """Write the list of Wake Med addresses into a CSV file"""
-    latlong = get_latlong()
-    with open('latlong.csv', 'w', newline='') as myfile:
-        wr = csv.writer(myfile, quoting=csv.QUOTE_ALL)
-        wr.writerow(latlong)
-
-write_csv2()
-```
-
-is not breaking into separate lines, so there is some flaw in my code that I still need to fix. Since my focus was
-to generate the file with the geographical coordinates attached to the addresses, I fixed this csv file by hand also. Again I suggest you just use the fixed latlong.csv file in my repository and move forward with this code using the pandas library:
+For the final csv file, I just used the pandas library, which is really the easiest way:
 
 
 ```
